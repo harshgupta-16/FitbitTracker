@@ -105,15 +105,47 @@ export default function App() {
     setData(prev => ({ ...prev, [nutrient]: [...prev[nutrient], newEntry] }));
   }, [dbMode]);
 
-  // ── Add all entries at once ────────────────────────────────────────────────
-  const handleAddAll = useCallback(async (dataObj) => {
+  // ── Delete all for specific date ───────────────────────────────────────────
+  const handleDeleteDayAll = useCallback(async (date) => {
+    let toDelete = [];
+    NUTRIENTS.forEach(n => {
+      data[n].forEach(e => {
+        if (e.date === date) toDelete.push(e.id);
+      });
+    });
+
+    if (dbMode === 'firebase') {
+      try {
+        for (const id of toDelete) {
+          await fbDelete(id);
+        }
+      } catch (err) {
+        console.error('Firebase delete failed', err);
+      }
+    }
+
+    setData(prev => {
+      const next = { ...prev };
+      NUTRIENTS.forEach(n => {
+        next[n] = next[n].filter(e => e.date !== date);
+      });
+      return next;
+    });
+  }, [data, dbMode]);
+
+  // ── Overwrite entries for a date ───────────────────────────────────────────
+  const handleOverwriteDay = useCallback(async (date, dataObj) => {
+    // 1. Delete all existing data for this date
+    await handleDeleteDayAll(date);
+    
+    // 2. Add the new values
     const common = { date: dataObj.date, note: dataObj.note };
     
     if (dataObj.calories > 0) await handleAdd('calories', { ...common, value: dataObj.calories });
     if (dataObj.protein > 0) await handleAdd('protein', { ...common, value: dataObj.protein });
     if (dataObj.carbs > 0) await handleAdd('carbs', { ...common, value: dataObj.carbs });
     if (dataObj.fats > 0) await handleAdd('fats', { ...common, value: dataObj.fats });
-  }, [handleAdd]);
+  }, [handleAdd, handleDeleteDayAll]);
 
   // ── Delete entry ───────────────────────────────────────────────────────────
   const handleDelete = useCallback(async (nutrient, id) => {
@@ -219,7 +251,9 @@ export default function App() {
       {showAddAll && (
         <AddAllModal
           onClose={() => setShowAddAll(false)}
-          onAddAll={handleAddAll}
+          appData={data}
+          onOverwriteDay={handleOverwriteDay}
+          onDeleteDay={handleDeleteDayAll}
         />
       )}
     </div>
