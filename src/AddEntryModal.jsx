@@ -2,20 +2,20 @@ import { useState } from 'react';
 
 const UNIT_MAP = {
   calories: 'kcal',
-  protein:  'g',
-  carbs:    'g',
-  fats:     'g',
+  protein: 'g',
+  carbs: 'g',
+  fats: 'g',
 };
 
 export default function AddEntryModal({ nutrient, onClose, onAdd }) {
   const today = new Date().toISOString().split('T')[0];
-  const [date, setDate]   = useState(today);
+  const [date, setDate] = useState(today);
   const [value, setValue] = useState('');
-  const [note, setNote]   = useState('');
+  const [note, setNote] = useState('');
   const [error, setError] = useState('');
 
   const label = nutrient.charAt(0).toUpperCase() + nutrient.slice(1);
-  const unit  = UNIT_MAP[nutrient];
+  const unit = UNIT_MAP[nutrient];
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -46,7 +46,7 @@ export default function AddEntryModal({ nutrient, onClose, onAdd }) {
             <input
               type="date"
               value={date}
-              max={today}
+              // max={today}
               onChange={(e) => { setDate(e.target.value); setError(''); }}
               required
             />

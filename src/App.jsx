@@ -3,6 +3,7 @@ import './index.css';
 import './App.css';
 import NutrientChart from './NutrientChart';
 import AddAllModal from './AddAllModal';
+import HistoryModal from './HistoryModal';
 import {
   FIREBASE_CONFIGURED,
   fetchEntries,
@@ -56,6 +57,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [dbMode, setDbMode]   = useState('local'); // 'firebase' | 'local'
   const [showAddAll, setShowAddAll] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
 
   // ── Bootstrap: load from Firebase or localStorage ──────────────────────────
   useEffect(() => {
@@ -191,9 +193,14 @@ export default function App() {
             </span>
           </p>
         </div>
-        <div className="header-date" onClick={() => setShowAddAll(true)} title="Log all macros for a day">
-          📅 {formatDisplayDate(todayIso())}
-          <span style={{ marginLeft: 4, opacity: 0.6, fontSize: '0.9rem' }}>+</span>
+        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+          <div className="header-date" onClick={() => setShowHistory(true)} title="Check macros of all days">
+            📊 View History
+          </div>
+          <div className="header-date" onClick={() => setShowAddAll(true)} title="Log all macros for a day">
+            📅 {formatDisplayDate(todayIso())}
+            <span style={{ marginLeft: 4, opacity: 0.6, fontSize: '0.9rem' }}>+</span>
+          </div>
         </div>
       </header>
 
@@ -254,6 +261,13 @@ export default function App() {
           appData={data}
           onOverwriteDay={handleOverwriteDay}
           onDeleteDay={handleDeleteDayAll}
+        />
+      )}
+
+      {showHistory && (
+        <HistoryModal
+          onClose={() => setShowHistory(false)}
+          appData={data}
         />
       )}
     </div>

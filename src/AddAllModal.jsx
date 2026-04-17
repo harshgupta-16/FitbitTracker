@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react';
 export default function AddAllModal({ onClose, appData, onOverwriteDay, onDeleteDay }) {
   const today = new Date().toISOString().split('T')[0];
   const [date, setDate] = useState(today);
-  
+
   const [calories, setCalories] = useState('');
   const [protein, setProtein] = useState('');
   const [carbs, setCarbs] = useState('');
   const [fats, setFats] = useState('');
-  
+
   const [note, setNote] = useState('');
   const [error, setError] = useState('');
 
@@ -18,7 +18,7 @@ export default function AddAllModal({ onClose, appData, onOverwriteDay, onDelete
   useEffect(() => {
     if (!appData) return;
     let totalCals = 0, totalPro = 0, totalCarb = 0, totalFat = 0;
-    
+
     appData.calories?.forEach(e => { if (e.date === date) totalCals += e.value; });
     appData.protein?.forEach(e => { if (e.date === date) totalPro += e.value; });
     appData.carbs?.forEach(e => { if (e.date === date) totalCarb += e.value; });
@@ -42,7 +42,7 @@ export default function AddAllModal({ onClose, appData, onOverwriteDay, onDelete
 
   function handleSubmit(e) {
     e.preventDefault();
-    
+
     const calNum = calories ? parseFloat(calories) : 0;
     const proNum = protein ? parseFloat(protein) : 0;
     const carbNum = carbs ? parseFloat(carbs) : 0;
@@ -71,7 +71,7 @@ export default function AddAllModal({ onClose, appData, onOverwriteDay, onDelete
       carbs: carbNum,
       fats: fatNum
     });
-    
+
     onClose();
   }
 
@@ -96,7 +96,7 @@ export default function AddAllModal({ onClose, appData, onOverwriteDay, onDelete
             <input
               type="date"
               value={date}
-              max={today}
+              // max={today}
               onChange={(e) => setDate(e.target.value)}
               required
             />
@@ -169,18 +169,18 @@ export default function AddAllModal({ onClose, appData, onOverwriteDay, onDelete
 
           <div style={{ display: 'flex', gap: '12px', marginTop: '12px' }}>
             {hasExistingData && (
-              <button 
-                type="button" 
-                className="modal-submit" 
+              <button
+                type="button"
+                className="modal-submit"
                 style={{ flex: 1, background: 'rgba(255, 80, 80, 0.15)', color: '#ff6b6b', border: '1px solid rgba(255,107,107,0.3)' }}
                 onClick={handleDeleteClick}
               >
                 Delete Day
               </button>
             )}
-            <button 
-              type="submit" 
-              className="modal-submit calories" 
+            <button
+              type="submit"
+              className="modal-submit calories"
               style={{ flex: 2, background: 'linear-gradient(135deg, #4ecdc4, #a855f7)' }}
             >
               {hasExistingData ? 'Save Overwrite' : '+ Add All Entries'}

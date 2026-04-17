@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -46,7 +48,9 @@
   --shadow-glow-fat: 0 0 40px rgba(168, 85, 247, 0.15);
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   min-height: 100vh;
 }
@@ -108,7 +112,7 @@ body::after {
 .header-left h1 {
   font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #f0f4ff 0%, rgba(240,244,255,0.6) 100%);
+  background: linear-gradient(135deg, #f0f4ff 0%, rgba(240, 244, 255, 0.6) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -172,26 +176,50 @@ body::after {
 .summary-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 3px;
   border-radius: 0 0 3px 3px;
   transition: opacity 0.3s;
 }
 
-.summary-card.calories::before { background: var(--calories-gradient); }
-.summary-card.protein::before  { background: var(--protein-gradient); }
-.summary-card.carbs::before    { background: var(--carbs-gradient); }
-.summary-card.fats::before     { background: var(--fats-gradient); }
+.summary-card.calories::before {
+  background: var(--calories-gradient);
+}
+
+.summary-card.protein::before {
+  background: var(--protein-gradient);
+}
+
+.summary-card.carbs::before {
+  background: var(--carbs-gradient);
+}
+
+.summary-card.fats::before {
+  background: var(--fats-gradient);
+}
 
 .summary-card:hover {
   transform: translateY(-3px);
   border-color: var(--border-hover);
 }
 
-.summary-card.calories:hover { box-shadow: var(--shadow-glow-cal); }
-.summary-card.protein:hover  { box-shadow: var(--shadow-glow-pro); }
-.summary-card.carbs:hover    { box-shadow: var(--shadow-glow-carb); }
-.summary-card.fats:hover     { box-shadow: var(--shadow-glow-fat); }
+.summary-card.calories:hover {
+  box-shadow: var(--shadow-glow-cal);
+}
+
+.summary-card.protein:hover {
+  box-shadow: var(--shadow-glow-pro);
+}
+
+.summary-card.carbs:hover {
+  box-shadow: var(--shadow-glow-carb);
+}
+
+.summary-card.fats:hover {
+  box-shadow: var(--shadow-glow-fat);
+}
 
 .summary-label {
   font-size: 0.75rem;
@@ -208,10 +236,21 @@ body::after {
   line-height: 1;
 }
 
-.summary-card.calories .summary-value { color: var(--calories-color); }
-.summary-card.protein  .summary-value { color: var(--protein-color); }
-.summary-card.carbs    .summary-value { color: var(--carbs-color); }
-.summary-card.fats     .summary-value { color: var(--fats-color); }
+.summary-card.calories .summary-value {
+  color: var(--calories-color);
+}
+
+.summary-card.protein .summary-value {
+  color: var(--protein-color);
+}
+
+.summary-card.carbs .summary-value {
+  color: var(--carbs-color);
+}
+
+.summary-card.fats .summary-value {
+  color: var(--fats-color);
+}
 
 .summary-unit {
   font-size: 0.85rem;
@@ -257,14 +296,29 @@ body::after {
   position: absolute;
   inset: 0;
   border-radius: var(--radius-xl);
-  background: radial-gradient(ellipse at top left, transparent 60%, rgba(255,255,255,0.015) 100%);
+  background: radial-gradient(ellipse at top left, transparent 60%, rgba(255, 255, 255, 0.015) 100%);
   pointer-events: none;
 }
 
-.chart-card.calories:hover { border-color: rgba(255,107,107,0.3); box-shadow: var(--shadow-glow-cal); }
-.chart-card.protein:hover  { border-color: rgba(78,205,196,0.3);  box-shadow: var(--shadow-glow-pro); }
-.chart-card.carbs:hover    { border-color: rgba(255,230,109,0.3); box-shadow: var(--shadow-glow-carb); }
-.chart-card.fats:hover     { border-color: rgba(168,85,247,0.3);  box-shadow: var(--shadow-glow-fat); }
+.chart-card.calories:hover {
+  border-color: rgba(255, 107, 107, 0.3);
+  box-shadow: var(--shadow-glow-cal);
+}
+
+.chart-card.protein:hover {
+  border-color: rgba(78, 205, 196, 0.3);
+  box-shadow: var(--shadow-glow-pro);
+}
+
+.chart-card.carbs:hover {
+  border-color: rgba(255, 230, 109, 0.3);
+  box-shadow: var(--shadow-glow-carb);
+}
+
+.chart-card.fats:hover {
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow: var(--shadow-glow-fat);
+}
 
 .chart-header {
   display: flex;
@@ -291,10 +345,21 @@ body::after {
   flex-shrink: 0;
 }
 
-.chart-card.calories .chart-icon { background: rgba(255,107,107,0.12); }
-.chart-card.protein  .chart-icon { background: rgba(78,205,196,0.12); }
-.chart-card.carbs    .chart-icon { background: rgba(255,230,109,0.12); }
-.chart-card.fats     .chart-icon { background: rgba(168,85,247,0.12); }
+.chart-card.calories .chart-icon {
+  background: rgba(255, 107, 107, 0.12);
+}
+
+.chart-card.protein .chart-icon {
+  background: rgba(78, 205, 196, 0.12);
+}
+
+.chart-card.carbs .chart-icon {
+  background: rgba(255, 230, 109, 0.12);
+}
+
+.chart-card.fats .chart-icon {
+  background: rgba(168, 85, 247, 0.12);
+}
 
 .chart-title {
   font-size: 1.05rem;
@@ -333,10 +398,25 @@ body::after {
   transform: translateY(-1px);
 }
 
-.chart-card.calories .add-btn:hover { border-color: rgba(255,107,107,0.5); color: var(--calories-color); }
-.chart-card.protein  .add-btn:hover { border-color: rgba(78,205,196,0.5);  color: var(--protein-color); }
-.chart-card.carbs    .add-btn:hover { border-color: rgba(255,230,109,0.5); color: var(--carbs-color); }
-.chart-card.fats     .add-btn:hover { border-color: rgba(168,85,247,0.5);  color: var(--fats-color); }
+.chart-card.calories .add-btn:hover {
+  border-color: rgba(255, 107, 107, 0.5);
+  color: var(--calories-color);
+}
+
+.chart-card.protein .add-btn:hover {
+  border-color: rgba(78, 205, 196, 0.5);
+  color: var(--protein-color);
+}
+
+.chart-card.carbs .add-btn:hover {
+  border-color: rgba(255, 230, 109, 0.5);
+  color: var(--carbs-color);
+}
+
+.chart-card.fats .add-btn:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  color: var(--fats-color);
+}
 
 .chart-container {
   width: 100%;
@@ -387,8 +467,13 @@ body::after {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .modal {
@@ -398,13 +483,20 @@ body::after {
   padding: 32px;
   width: 100%;
   max-width: 420px;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
   animation: slideUp 0.25s ease;
 }
 
 @keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .modal-header {
@@ -461,7 +553,7 @@ body::after {
 }
 
 .form-group input {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 12px 14px;
@@ -474,8 +566,8 @@ body::after {
 }
 
 .form-group input:focus {
-  border-color: rgba(255,255,255,0.3);
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
 }
 
 .form-group input::-webkit-calendar-picker-indicator {
@@ -501,19 +593,31 @@ body::after {
   transform: translateY(-1px);
 }
 
-.modal-submit.calories { background: var(--calories-gradient); }
-.modal-submit.protein  { background: var(--protein-gradient);  }
-.modal-submit.carbs    { background: var(--carbs-gradient); color: #333;   }
-.modal-submit.fats     { background: var(--fats-gradient);     }
+.modal-submit.calories {
+  background: var(--calories-gradient);
+}
+
+.modal-submit.protein {
+  background: var(--protein-gradient);
+}
+
+.modal-submit.carbs {
+  background: var(--carbs-gradient);
+  color: #333;
+}
+
+.modal-submit.fats {
+  background: var(--fats-gradient);
+}
 
 /* ---- Tooltip ---- */
 .custom-tooltip {
   background: #1c2340;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
   padding: 10px 14px;
   font-size: 0.82rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .custom-tooltip .label {
@@ -561,7 +665,7 @@ body::after {
 }
 
 .log-table th {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-muted);
   font-weight: 600;
   text-transform: uppercase;
@@ -573,7 +677,7 @@ body::after {
 
 .log-table td {
   padding: 8px 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   color: var(--text-secondary);
 }
 
@@ -582,14 +686,14 @@ body::after {
 }
 
 .log-table tr:hover td {
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
   color: var(--text-primary);
 }
 
 .delete-row-btn {
   background: none;
   border: none;
-  color: rgba(255,80,80,0.5);
+  color: rgba(255, 80, 80, 0.5);
   cursor: pointer;
   font-size: 0.8rem;
   padding: 2px 6px;
@@ -599,14 +703,26 @@ body::after {
 
 .delete-row-btn:hover {
   color: #ff5050;
-  background: rgba(255,80,80,0.1);
+  background: rgba(255, 80, 80, 0.1);
 }
 
 /* ---- Scrollbar ---- */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
 
 /* ---- DB Sync Badge ---- */
 .db-badge {
@@ -648,7 +764,7 @@ body::after {
 }
 
 .setup-banner code {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   padding: 1px 6px;
   border-radius: 4px;
   font-size: 0.78rem;
@@ -670,35 +786,43 @@ body::after {
 .spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid rgba(255,255,255,0.08);
+  border: 3px solid rgba(255, 255, 255, 0.08);
   border-top-color: var(--protein-color);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ---- Mobile Overrides ---- */
 @media (max-width: 500px) {
+
   /* Keep 2 columns for summary strip */
   .summary-strip {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
+
   .summary-card {
     padding: 12px 14px;
   }
+
   .summary-value {
     font-size: 1.25rem;
   }
+
   .summary-label {
     font-size: 0.65rem;
   }
+
   .summary-sub {
     font-size: 0.65rem;
   }
+
   /* Reduce chart verticalness to look more graph-like */
   .chart-container {
     height: 140px;
